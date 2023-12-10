@@ -21,10 +21,6 @@ This is a simple timer website implemented using HTML, CSS, and JavaScript.
 - `style.css`: CSS file for styling the timer.
 - `script.js`: JavaScript file for handling the timer logic.
 
-## Customization
-
-You can customize the initial countdown time and styling by modifying the `countdownTime` variable in the `script.js` file and the styles in the `style.css` file.
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
