@@ -1,4 +1,3 @@
-# Timer
 # Timer Website
 
 This is a simple timer website implemented using HTML, CSS, and JavaScript.
