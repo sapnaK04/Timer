@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <title>Timer Website</title>
+</head>
+<body>
+    <div id="timer">00:00:00</div>
+
+    <div id="controls">
+        <button id="startButton" onclick="startTimer()">Start</button>
+        <button id="stopButton" onclick="stopTimer()">Stop</button>
+        <input type="number" id="timeInput" placeholder="Set time in seconds">
+        <button onclick="setTime()">Set Time</button>
+    </div>
+
+    <script>
+        var countdownTime = 300; // Initial time in seconds
+        var timerInterval;
+
+        var timerDisplay = document.getElementById('timer');
+        var startButton = document.getElementById('startButton');
+        var stopButton = document.getElementById('stopButton');
+        var timeInput = document.getElementById('timeInput');
+
+        function updateTimerDisplay() {
+            var hours = Math.floor(countdownTime / 3600);
+            var minutes = Math.floor((countdownTime % 3600) / 60);
+            var seconds = countdownTime % 60;
+
+            hours = (hours < 10) ? '0' + hours : hours;
+            minutes = (minutes < 10) ? '0' + minutes : minutes;
+            seconds = (seconds < 10) ? '0' + seconds : seconds;
+
+            timerDisplay.textContent = hours + ':' + minutes + ':' + seconds;
+        }
+
+        function startTimer() {
+            timerInterval = setInterval(function () {
+                if (countdownTime > 0) {
+                    countdownTime--;
+                    updateTimerDisplay();
+                } else {
+                    clearInterval(timerInterval);
+                    alert('Timer Expired!');
+                    resetTimer();
+                }
+            }, 1000);
+
+            startButton.disabled = true;
+            stopButton.disabled = false;
+        }
+
+        function stopTimer() {
+            clearInterval(timerInterval);
+            startButton.disabled = false;
+            stopButton.disabled = true;
+        }
+
+        function setTime() {
+            var inputTime = parseInt(timeInput.value, 10);
+            if (!isNaN(inputTime) && inputTime > 0) {
+                countdownTime = inputTime;
+                updateTimerDisplay();
+                timeInput.value = '';
+            } else {
+                alert('Please enter a valid positive number for the time.');
+            }
+        }
+
+        function resetTimer() {
+            clearInterval(timerInterval);
+            countdownTime = 0;
+            updateTimerDisplay();
+            startButton.disabled = false;
+            stopButton.disabled = true;
+        }
+    </script>
+</body>
+</html>
