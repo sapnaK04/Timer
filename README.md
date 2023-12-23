@@ -10,7 +10,7 @@ This is a simple timer website implemented using HTML, CSS, and JavaScript.
 
 3. To start the timer, click the "Start" button.
 
-4. To stop the timer, click the "Stop" button.
+4. To stop the timer  click the "Stop" button.
 
 5. To set a custom countdown time, enter the desired time in seconds in the input field and click the "Set Time" button.
 
